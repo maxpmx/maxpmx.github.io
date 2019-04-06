@@ -4,7 +4,7 @@ repository: Git repository where your resume will be hosted, only required if yo
 
 # Personal info
 name: Minxing Pang
-title: Your job title
+title: Research Assistent
 email: maxpmx@outlook.com
 phone: +86 13622000965
 # website: Your website (eg. https://google.com)(optional)
@@ -24,15 +24,15 @@ phone: +86 13622000965
 
 # About Section
 # about_title: About Me (Use this to override about section title)
-about_profile_image: Directory of profile image (eg. images/profile.jpg)
+about_profile_image: image/photo4.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Write an awesome description about yourself here, this supports markdown, so you can add [links](http://foobar.com) and highlight things <mark>like this</mark>.
+  I am a junior undergraduate student majoring in Applied Mathematics, interested in mathematics and computer science.
 
-  You can even add paragraphs by using empty lines like this and add anything else markdown supports such as
-    - Lists
-    - Tables
-    - Links
-    - Images
+  My research/work interests are as followed
+    - Architecture of Nerual Network 
+    - Application of Deep Learning to Finance
+    - Information and Numerical science
+    - Mathematical Model
 
 # Projects Section
 # projects_title: Projects #(Use this to override about projects section title)
@@ -46,9 +46,9 @@ about_content: | # this will include new lines to allow paragraphs
 # More Section
 # more_title: A Little More About Me #(Use this to override about more section title)
 more_content: | # this will include new lines to allow paragraphs
-  This is where you can write a little more about yourself. You could title this section **Interests** and include some of your other interests.
+  </Extracurricular Activities>
 
-  Or you could title it **Skills** and write a bit more about things that make you more desirable, like *leadership* or *teamwork*
+  I am also Co-Chair of Nankai Quantitative Investment Club and enjoy communicating with excellent people.
 
 # Footer
 footer_show_references: true

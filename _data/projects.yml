@@ -1,8 +1,12 @@
 # Project template
-- name: Project name
-  link: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-  github: Github page for project (eg. sproogen/modern-resume-theme)(optional)
+- name: Shenzhen Cup Mathematical model challenge
+  # link: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
+  # github: Github page for project (eg. sproogen/modern-resume-theme)(optional)
   quote: >
-    Short overview of the project (optional)
+    LEADER RESEARCHER Apr. 2018 - Aug. 2018
   description: | # this will include new lines to allow paragraphs
-    Description about the work on/with the project
+    - Analysed 1TB genetic data by bioinformatic algorithms
+    - Constructed a mathematical model to handle the data
+    - Got 2nd place in the final competition of Shenzhen Cup mathematical model challenge
+
+

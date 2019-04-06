@@ -3,8 +3,8 @@
   # link: Link to company (optional)
   job_title: RESEARCH ASSISTENT
   dates: Feb. 2019 - June. 2019 
-  # quote: >
-  #  Short description of the company (optional)
+  quote: >
+   RNN, LSTM, Stock Price Prediction, Optimization, Architecture of Nerual Network, Embedding Layer
   description: | # this will include new lines to allow paragraphs
     - Design a novel RNN architecher to predicet the change of stock price
     - Read the paper published in top conference and evaluate the results
@@ -15,20 +15,20 @@
   # link: Link to company (optional)
   job_title: RESEARCH ASSISTENT
   dates: Mar. 2018 - Jan. 2019 
-  # quote: >
-  #  Short description of the company (optional)
+  quote: >
+   Data Visualization, Big Data Mining in Linux, correlation prediction, Graph Network
   description: | # this will include new lines to allow paragraphs
     - Designed and evaluated some quantitative trading strategies
     - Analysed genetic data via Python and machine learning algorithms
     - Did some coding works in bioinformatics
 
-- company: School of Mathematics, Nankai University
-  # link: Link to company (optional)
-  job_title: LEADER RESEARCHER
-  dates: Apr. 2018 - Aug. 2018
-  # quote: >
-  #  Short description of the company (optional)
-  description: | # this will include new lines to allow paragraphs
-    - Analysed 1TB genetic data by bioinformatic algorithms
-    - Constructed a mathematical model to handle the data
-    - Got 2nd place in the final competition of Shenzhen Cup mathematical model challenge
+# - company: School of Mathematics, Nankai University
+#   # link: Link to company (optional)
+#   job_title: LEADER RESEARCHER
+#   dates: Apr. 2018 - Aug. 2018
+#   # quote: >
+#   #  Short description of the company (optional)
+#   description: | # this will include new lines to allow paragraphs
+#     - Analysed 1TB genetic data by bioinformatic algorithms
+#     - Constructed a mathematical model to handle the data
+#     - Got 2nd place in the final competition of Shenzhen Cup mathematical model challenge
