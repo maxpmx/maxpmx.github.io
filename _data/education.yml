@@ -1,13 +1,4 @@
 # Education Template
-- name: Nankai University
-  dates: 2016 - 2020
-  qualification: B.S Information And Numerical Science
-  quote: >
-    Got Innovation Scholarship in 2017 and 2018, GPA 81/100   
-  description: | # this will include new lines to allow paragraphs
-    Advisor--Prof. Jishou Ruan
-    
-    Mathematical Analysis, Advanced Algebra, Probability Theory, Signal and Symstem, Data Base, Data Structure, Computer Operating Symstem and Network, Financial Engineering
 - name: Tsinghua University
   dates: 2019.2 - 2019.6
   qualification: Visiting Studnet
@@ -17,3 +8,14 @@
     Advisor--Prof. Jian Li
 
     Graduate Course:Advanced Theoretical Computer Science
+    
+- name: Nankai University
+  dates: 2016 - 2020
+  qualification: B.S Information And Numerical Science
+  quote: >
+    Got Innovation Scholarship in 2017 and 2018, GPA 81/100   
+  description: | # this will include new lines to allow paragraphs
+    Advisor--Prof. Jishou Ruan
+    
+    Mathematical Analysis, Advanced Algebra, Probability Theory, Signal and Symstem, Data Base, Data Structure, Computer Operating Symstem and Network, Financial Engineering
+
