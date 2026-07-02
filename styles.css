@@ -259,9 +259,9 @@ button { font: inherit; }
 }
 .profile-card__visual img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
 }
 .profile-card__body { padding: 0.85rem 0.1rem 0.1rem; }
 .profile-card__label {
@@ -271,27 +271,6 @@ button { font: inherit; }
 }
 .profile-card p { margin-top: 0; }
 #profile-focus { color: var(--muted); font-size: 0.92rem; }
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.45rem;
-  margin: 0.75rem 0 0;
-}
-.quick-stats div {
-  padding: 0.58rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: rgba(255,255,255,0.44);
-}
-[data-theme="dark"] .quick-stats div { background: rgba(255,255,255,0.05); }
-.quick-stats dt { color: var(--muted); font-size: 0.68rem; }
-.quick-stats dd {
-  margin: 0;
-  color: var(--text);
-  font-weight: 820;
-  font-size: 1.08rem;
-  line-height: 1.15;
-}
 
 .section { padding: clamp(42px, 6vw, 72px) 0; }
 .section--tight { padding-top: clamp(34px, 5vw, 56px); }
@@ -565,7 +544,6 @@ button { font: inherit; }
   }
   .hero { padding-top: 34px; }
   .hero h1 { font-size: clamp(2.7rem, 16vw, 4rem); }
-  .quick-stats { grid-template-columns: 1fr; }
   .timeline-item { grid-template-columns: 1fr; }
   .footer-grid {
     flex-direction: column;

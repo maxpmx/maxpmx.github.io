@@ -72,16 +72,6 @@
 
     const chips = $("#hero-chips");
     data.interests.forEach((interest) => chips.append(el("span", { class: "chip", text: interest })));
-
-    const stats = $("#quick-stats");
-    const journals = data.publications.filter((p) => p.category === "journal").length;
-    const preprints = data.publications.filter((p) => p.category === "preprint").length;
-    const talks = data.talks.length;
-    [
-      ["Journals", journals],
-      ["Preprints", preprints],
-      ["Talks", talks]
-    ].forEach(([label, value]) => stats.append(el("div", {}, el("dt", { text: label }), el("dd", { text: value }))));
   };
 
   const renderResearch = () => {
@@ -201,32 +191,6 @@
     });
   };
 
-  const renderProfileSections = () => {
-    const mentoring = $("#mentoring-card");
-    mentoring.append(el("h3", { text: "Mentoring" }));
-    mentoring.append(el("ul", { class: "info-list" }, data.mentoring.map((item) => el("li", {},
-      el("strong", { text: `${item.title} · ${item.date}` }),
-      el("span", { text: item.institution }),
-      el("span", { text: item.text })
-    ))));
-
-    const awards = $("#awards-card");
-    awards.append(el("h3", { text: "Honors" }));
-    awards.append(el("ul", { class: "info-list" }, data.awards.map((award) => el("li", {},
-      el("strong", { text: award.title }),
-      el("span", { text: [award.date, award.note].filter(Boolean).join(" · ") })
-    ))));
-
-    const skills = $("#skills-card");
-    skills.append(el("h3", { text: "Skills" }));
-    data.skills.forEach((group) => {
-      skills.append(el("div", { class: "skill-group" },
-        el("strong", { text: group.level }),
-        el("div", { class: "hero__chips" }, group.items.map((item) => el("span", { class: "chip", text: item })))
-      ));
-    });
-  };
-
   const renderContact = () => {
     setText("#contact-text", `For collaboration, talks, or research conversations, contact ${data.shortName} by email or visit the profiles below.`);
     const container = $("#contact-links");
@@ -308,7 +272,6 @@
     renderPublications();
     renderTalks();
     renderEducation();
-    renderProfileSections();
     renderContact();
     initTheme();
     initNavigation();

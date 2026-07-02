@@ -7,7 +7,7 @@ window.SITE_DATA = {
   affiliation: "University of Pennsylvania",
   location: "Philadelphia, PA",
   lastUpdated: "July 2026",
-  profileImage: "https://scholar.googleusercontent.com/citations?view_op=view_photo&user=wZbrjsQAAAAJ&citpid=1",
+  profileImage: "assets/profile.jpg",
   cvPath: "assets/cv.pdf",
   tagline: "Ph.D. candidate at Penn building AI for computational pathology and spatial omics.",
   researchStatement: "I build deep-learning systems that turn routine tissue images into spatial molecular, cellular, and microenvironment readouts.",
