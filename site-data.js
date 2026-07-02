@@ -7,16 +7,15 @@ window.SITE_DATA = {
   affiliation: "University of Pennsylvania",
   location: "Philadelphia, PA",
   lastUpdated: "July 2026",
-  profileImage: "assets/profile-placeholder.svg",
+  profileImage: "https://scholar.googleusercontent.com/citations?view_op=view_photo&user=wZbrjsQAAAAJ&citpid=1",
   cvPath: "assets/cv.pdf",
-  tagline: "AI for healthcare, computational pathology, biomedical imaging, and spatial omics.",
-  researchStatement: "My research develops deep learning methods that bridge routine histology imaging and molecular measurement, turning ubiquitous tissue images into rich, spatially resolved, multi-modal readouts for precision medicine.",
-  focus: "Deep learning methods that connect tissue morphology with cell identity, molecular state, and spatial organization.",
+  tagline: "Ph.D. candidate at Penn building AI for computational pathology and spatial omics.",
+  researchStatement: "I build deep-learning systems that turn routine tissue images into spatial molecular, cellular, and microenvironment readouts.",
+  focus: "Histology-to-omics modeling, tissue image understanding, and spatial microenvironment analysis.",
   interests: [
-    "AI for Healthcare",
-    "Biomedical Imaging",
-    "Spatial Omics",
     "Computational Pathology",
+    "Spatial Omics",
+    "Biomedical Imaging",
     "Deep Learning"
   ],
   contact: {
@@ -27,30 +26,25 @@ window.SITE_DATA = {
   researchThemes: [
     {
       icon: "✦",
-      title: "Histology-to-omics modeling",
-      text: "Learning mappings from routine tissue images to spatially resolved molecular measurements."
+      title: "Histology-to-omics",
+      text: "Predicting spatial molecular measurements from routine tissue images."
     },
     {
       icon: "◎",
-      title: "Tissue image understanding",
-      text: "Unified segmentation and classification models for complex biomedical tissue images."
+      title: "Tissue-image AI",
+      text: "Unified segmentation and classification models for biomedical images."
     },
     {
       icon: "▣",
-      title: "Cellular microenvironments",
-      text: "Computational tools for studying cell niches, spatial organization, and disease-relevant tissue states."
-    },
-    {
-      icon: "∆",
-      title: "Translation-ready AI",
-      text: "Robust, interpretable machine learning systems for biomedical discovery and precision medicine."
+      title: "Spatial microenvironments",
+      text: "Quantifying cell niches and disease-relevant tissue organization."
     }
   ],
   featuredWork: [
     {
       title: "CelloType: A Unified Model for Segmentation and Classification of Tissue Images",
       meta: "Nature Methods, 2025",
-      text: "A tissue-image model for integrated segmentation and classification tasks in biomedical images.",
+      text: "Unified segmentation and classification for tissue images.",
       links: [
         { label: "Paper", url: "https://www.nature.com/articles/s41592-024-02513-1" },
         { label: "Code", url: "https://github.com/tanlabcode/CelloType" }
@@ -59,7 +53,7 @@ window.SITE_DATA = {
     {
       title: "Query-driven generative AI synthesizes multi-modal spatial omics from histology",
       meta: "Under review, 2025",
-      text: "A generative AI framework for synthesizing multi-modal spatial omics readouts from histology images.",
+      text: "Generative framework for synthesizing spatial omics from histology.",
       links: [
         { label: "bioRxiv", url: "https://www.biorxiv.org/content/10.64898/2025.12.11.693669v1" }
       ]
@@ -197,11 +191,11 @@ window.SITE_DATA = {
       title: "Research Mentor",
       institution: "Tan Lab, Children's Hospital of Philadelphia & UPenn",
       date: "2022 - Present",
-      text: "Mentor junior graduate and undergraduate students on computational pathology and spatial omics projects, including method development, coding, and manuscript preparation."
+      text: "Mentor junior graduate and undergraduate students on computational pathology and spatial omics projects."
     }
   ],
   skills: [
-    { level: "Advanced", items: ["Python", "PyTorch", "Deep Learning", "Biomedical Imaging Analysis"] },
+    { level: "Advanced", items: ["Python", "PyTorch", "Deep Learning", "Biomedical Imaging"] },
     { level: "Familiar", items: ["R", "C++"] }
   ]
 };

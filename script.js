@@ -38,33 +38,47 @@
     return span;
   };
 
-  const setText = (selector, text) => { const node = $(selector); if (node) node.textContent = text || ""; };
+  const setText = (selector, text) => {
+    const node = $(selector);
+    if (node) node.textContent = text || "";
+  };
 
   const renderHero = () => {
     setText("#hero-kicker", `${data.title} · ${data.affiliation}`);
     setText("#hero-title", data.name);
     setText("#hero-subtitle", data.tagline);
     setText("#profile-focus", data.focus);
-    $("#profile-image").src = data.profileImage;
-    $("#profile-image").alt = `${data.name} profile image placeholder`;
+
+    const profileImage = $("#profile-image");
+    if (profileImage) {
+      const fallback = "assets/profile-placeholder.svg";
+      profileImage.src = data.profileImage || fallback;
+      profileImage.alt = `${data.name} portrait`;
+      profileImage.addEventListener("error", () => {
+        if (!profileImage.src.endsWith(fallback)) {
+          profileImage.src = fallback;
+          profileImage.alt = `${data.name} initials`;
+        }
+      }, { once: true });
+    }
 
     const actions = $("#hero-actions");
     actions.append(
-      el("a", { href: `mailto:${data.contact.email}`, class: "button button--primary" }, "Email me"),
-      el("a", { href: data.contact.scholar, class: "button", ...externalAttrs(data.contact.scholar) }, "Google Scholar"),
-      el("a", { href: data.contact.github, class: "button", ...externalAttrs(data.contact.github) }, "GitHub"),
-      el("a", { href: data.cvPath, class: "button" }, "Download CV")
+      el("a", { href: `mailto:${data.contact.email}`, class: "button button--primary" }, "Email"),
+      el("a", { href: data.cvPath, class: "button" }, "CV"),
+      el("a", { href: data.contact.scholar, class: "button", ...externalAttrs(data.contact.scholar) }, "Scholar"),
+      el("a", { href: data.contact.github, class: "button", ...externalAttrs(data.contact.github) }, "GitHub")
     );
 
     const chips = $("#hero-chips");
     data.interests.forEach((interest) => chips.append(el("span", { class: "chip", text: interest })));
 
     const stats = $("#quick-stats");
-    const published = data.publications.filter((p) => p.category === "journal").length;
+    const journals = data.publications.filter((p) => p.category === "journal").length;
     const preprints = data.publications.filter((p) => p.category === "preprint").length;
     const talks = data.talks.length;
     [
-      ["Journal papers", published],
+      ["Journals", journals],
       ["Preprints", preprints],
       ["Talks", talks]
     ].forEach(([label, value]) => stats.append(el("div", {}, el("dt", { text: label }), el("dd", { text: value }))));
@@ -96,8 +110,8 @@
 
   const categoryLabels = {
     all: "All",
-    journal: "Journal papers",
-    conference: "Conference papers",
+    journal: "Journals",
+    conference: "Conference",
     preprint: "Preprints"
   };
 
@@ -107,19 +121,22 @@
       authors.append(highlightAuthor(author));
       if (idx < paper.authors.length - 1) authors.append(document.createTextNode(", "));
     });
+
     const venue = el("p", { class: "publication-item__venue" },
       el("strong", { text: paper.venue }),
       document.createTextNode(` · ${paper.year}`),
       paper.status ? document.createTextNode(` · ${paper.status}`) : ""
     );
+
     const badges = el("div", { class: "publication-badges" },
-      el("span", { class: "badge", text: categoryLabels[paper.category] || paper.category }),
-      ...(paper.status ? [el("span", { class: "badge", text: paper.status })] : [])
+      el("span", { class: "badge", text: categoryLabels[paper.category] || paper.category })
     );
+
     const links = paper.links?.length ? el("div", { class: "link-row" }, paper.links.map((paperLink) => link(paperLink.label, paperLink.url))) : null;
+
     return el("article", { class: "publication-item reveal", "data-category": paper.category },
-      authors,
       el("h3", { text: paper.title }),
+      authors,
       venue,
       badges,
       links
@@ -194,14 +211,14 @@
     ))));
 
     const awards = $("#awards-card");
-    awards.append(el("h3", { text: "Honors and awards" }));
+    awards.append(el("h3", { text: "Honors" }));
     awards.append(el("ul", { class: "info-list" }, data.awards.map((award) => el("li", {},
       el("strong", { text: award.title }),
       el("span", { text: [award.date, award.note].filter(Boolean).join(" · ") })
     ))));
 
     const skills = $("#skills-card");
-    skills.append(el("h3", { text: "Technical skills" }));
+    skills.append(el("h3", { text: "Skills" }));
     data.skills.forEach((group) => {
       skills.append(el("div", { class: "skill-group" },
         el("strong", { text: group.level }),
@@ -215,8 +232,8 @@
     const container = $("#contact-links");
     container.append(
       el("a", { href: `mailto:${data.contact.email}`, class: "button button--primary" }, data.contact.email),
-      el("a", { href: data.contact.github, class: "button", ...externalAttrs(data.contact.github) }, "GitHub"),
-      el("a", { href: data.contact.scholar, class: "button", ...externalAttrs(data.contact.scholar) }, "Google Scholar")
+      el("a", { href: data.contact.scholar, class: "button", ...externalAttrs(data.contact.scholar) }, "Scholar"),
+      el("a", { href: data.contact.github, class: "button", ...externalAttrs(data.contact.github) }, "GitHub")
     );
     setText("#footer-name", `© ${new Date().getFullYear()} ${data.name}`);
     setText("#footer-updated", `Last updated: ${data.lastUpdated}`);
@@ -277,6 +294,7 @@
       jobTitle: data.title,
       affiliation: { "@type": "CollegeOrUniversity", name: data.affiliation },
       email: `mailto:${data.contact.email}`,
+      image: data.profileImage,
       url: window.location.href,
       sameAs: [data.contact.github, data.contact.scholar]
     };
