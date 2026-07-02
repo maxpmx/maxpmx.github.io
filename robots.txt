@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Add your deployed domain after hosting, for example:
+# Sitemap: https://your-domain.edu/sitemap.xml

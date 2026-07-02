@@ -1,7 +1,6 @@
-*.gem
-.bundle
-.sass-cache
-_site
-Gemfile.lock
-*.code-workspace
-vendor
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Local server logs
+*.log

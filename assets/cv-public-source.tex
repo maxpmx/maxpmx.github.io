@@ -1,0 +1,223 @@
+\documentclass[11pt, letterpaper]{article}
+
+% ---- Packages ----
+\usepackage[margin=0.75in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo} % Palatino font
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+
+% ---- Colors ----
+\definecolor{accent}{HTML}{1A3C6E}
+\definecolor{linkblue}{HTML}{2B5797}
+\definecolor{highlight}{HTML}{FFF8E1}
+\definecolor{highlightborder}{HTML}{E8A817}
+\definecolor{gray}{HTML}{666666}
+
+% ---- Hyperlinks ----
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkblue,
+  urlcolor=linkblue,
+  pdfauthor={Minxing Pang},
+  pdftitle={Minxing Pang - Curriculum Vitae},
+}
+
+% ---- Section Formatting ----
+\titleformat{\section}
+  {\large\bfseries\color{accent}\scshape}
+  {}
+  {0em}
+  {}
+  [\vspace{-0.6em}\textcolor{accent}{\rule{\textwidth}{0.8pt}}]
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+
+% ---- Footer ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\small\textcolor{gray}{Minxing Pang --- Curriculum Vitae --- Page \thepage\ of \pageref{LastPage}}}
+
+% ---- Custom commands ----
+\newcommand{\cventry}[2]{%
+  \noindent\begin{tabularx}{\textwidth}{@{}X r@{}}
+    #1 & \textcolor{gray}{#2} \\
+  \end{tabularx}\vspace{1pt}%
+}
+
+\newcommand{\me}[1]{\textbf{#1}}
+
+\newcommand{\papertag}[2]{\,[\href{#2}{\textcolor{linkblue}{#1}}]}
+
+% ---- Highlight box for featured paper ----
+\tcbset{
+  highlightbox/.style={
+    colback=highlight,
+    colframe=highlightborder,
+    boxrule=0.6pt,
+    arc=2pt,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    boxsep=0pt,
+  }
+}
+
+% ================= DOCUMENT =================
+\begin{document}
+
+\thispagestyle{fancy}
+
+% ---- Header ----
+\begin{center}
+  {\LARGE\bfseries\color{accent}\textls[120]{MINXING PANG}}\\[6pt]
+  {\small
+    \href{mailto:minxing@sas.upenn.edu}{minxing@sas.upenn.edu} \\[2pt]
+    \href{https://github.com/maxpmx}{GitHub} \enspace$\vert$\enspace
+    \href{https://scholar.google.com/citations?user=wZbrjsQAAAAJ}{Google Scholar}
+  }
+\end{center}
+
+\vspace{-4pt}
+
+% =========================================================
+\section{Research Interests}
+% =========================================================
+
+AI for Healthcare\enspace$\cdot$\enspace Biomedical Imaging\enspace$\cdot$\enspace Spatial Omics\enspace$\cdot$\enspace Computational Pathology\enspace$\cdot$\enspace Deep Learning
+
+\vspace{4pt}
+\noindent\small\textit{My research develops deep learning methods that bridge routine histology imaging and molecular measurement, turning ubiquitous tissue images into rich, spatially resolved, multi-modal readouts for precision medicine.}
+
+% =========================================================
+\section{Education}
+% =========================================================
+
+\cventry{\textbf{University of Pennsylvania}, Philadelphia, PA, USA}{2022 -- 2026 (Expected)}
+\hspace{1em}\textit{Ph.D.\ in Applied Mathematics and Computational Science}\\
+\hspace{1em}Advisor: Kai Tan, Ph.D., Professor of Pediatrics
+
+\vspace{6pt}
+\cventry{\textbf{King Abdullah University of Science and Technology (KAUST)}, Saudi Arabia}{2020 -- 2022}
+\hspace{1em}\textit{M.S.\ in Applied Mathematics and Computational Science}\\
+\hspace{1em}Advisor: Jesper Tegn\'er, Ph.D., Professor of Bioscience
+
+\vspace{6pt}
+\cventry{\textbf{Nankai University}, Tianjin, China}{2016 -- 2020}
+\hspace{1em}\textit{B.S.\ in Information and Computational Science}\\
+\hspace{1em}Advisor: Jishou Ruan, Ph.D., Professor of Mathematics\\
+\hspace{1em}Thesis: \textit{Modeling single-cell RNA-seq data using deep learning}
+
+% =========================================================
+\section{Publications}
+% =========================================================
+
+\noindent\small\textcolor{gray}{Name in \textbf{bold} indicates author. Google Scholar profile linked in header.}\normalsize
+\vspace{4pt}
+
+\begin{enumerate}[leftmargin=1.5em, itemsep=6pt, label={[\arabic*]}]
+
+\item \me{Pang M}, Roy TK, Wu X, Tan K. (2025). CelloType: A Unified Model for Segmentation and Classification of Tissue Images. \textit{Nature Methods}.
+\papertag{Paper}{https://www.nature.com/articles/s41592-024-02513-1}
+\papertag{Codes}{https://github.com/tanlabcode/CelloType}
+
+\item Bandyopadhyay S, Duffy M, Ahn K, Sussman J, \me{Pang M}, \ldots, and Tan K. (2024). Mapping the cellular biogeography of human bone marrow niches using single-cell transcriptomics and proteomic imaging. \textit{Cell}.
+\papertag{Paper}{https://www.cell.com/cell/fulltext/S0092-8674(24)00408-2}
+
+\item Yu W, Biyik-Sit R, Uzun Y, Chen CH, Thadi A, Sussman JH, \me{Pang M}, \ldots, and Tan K. (2025). Longitudinal single-cell multiomic atlas of high-risk neuroblastoma reveals chemotherapy-induced tumor microenvironment rewiring. \textit{Nature Genetics}.
+
+\end{enumerate}
+
+% =========================================================
+\section{Conference Papers}
+% =========================================================
+
+\begin{enumerate}[leftmargin=1.5em, itemsep=6pt, label={[\arabic*]}, resume]
+
+\item \me{Pang M}, Tegn\'er J. (2020). Representation Learning and Translation between the Mouse and Human Brain using a Deep Transformer Architecture. \textit{International Conference on Machine Learning (ICML) 2020 Workshop on Computational Biology}. \textbf{Contributed Talk} (Top 5\%).
+\papertag{PDF}{https://icml-compbio.github.io/icml-website-2020/2020/papers/WCBICML2020_paper_29.pdf}
+\papertag{Codes}{https://github.com/maxpmx/scTT-pytorch}
+
+\end{enumerate}
+
+% =========================================================
+\section{Manuscripts Under Review / Preprints}
+% =========================================================
+
+\begin{enumerate}[leftmargin=1.5em, itemsep=6pt, label={[\arabic*]}, resume]
+
+\item
+% \begin{tcolorbox}[highlightbox]
+\me{Pang M}, Roy TK, Wu X, Tan K. (2025). A Query-driven generative AI synthesizes multi-modal spatial omics from histology. \textbf{\textit{Under review}}.
+\papertag{bioRxiv}{https://www.biorxiv.org/content/10.64898/2025.12.11.693669v1}
+% \hfill\textcolor{highlightborder}{\small$\bigstar$ \textbf{Featured Work}}
+% \end{tcolorbox}
+
+\item \me{Pang M}, Su K, Li M. (2021). Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors.
+\papertag{bioRxiv}{https://www.biorxiv.org/content/10.1101/2021.02.28.433265}
+\papertag{Codes}{https://github.com/maxpmx/HisToGene}
+
+% \item \me{Pang M}, Tegn\'er J. (2020). Multitask learning for Transformers with application to large-scale single-cell transcriptomes.
+% \papertag{bioRxiv}{https://www.biorxiv.org/content/10.1101/2021.05.29.445901}
+
+\end{enumerate}
+
+% =========================================================
+\section{Invited Talks \& Presentations}
+% =========================================================
+
+\textit{Towards Unified Segmentation and Classification of Tissue Images}
+
+\vspace{4pt}
+\cventry{\hspace{1em}HTAN-HuBMAP Joint Meeting, Stanford University, CA}{March 2024}
+\cventry{\hspace{1em}Schmidt Center Symposium: Biomedical Science and AI, Koch Institute, MIT, MA}{April 2025}
+
+\vspace{6pt}
+\noindent \textit{Generative AI synthesizes multi-modal spatial omics from histology}
+
+\vspace{4pt}
+\cventry{\hspace{1em}Shanghai Medical College, Fudan University, CN \quad\textcolor{gray}{(Invited)}}{December 2024}
+\cventry{\hspace{1em}School of Medicine, Zhejiang University, CN \quad\textcolor{gray}{(Invited)}}{July 2025}
+
+
+% =========================================================
+\section{Honors \& Awards}
+% =========================================================
+
+% \cventry{National Scholarship for Outstanding International Students, China Scholarship Council}{2025}
+\cventry{KAUST Fellowship}{2020 -- 2022}
+\cventry{Outstanding Undergraduate Thesis of Nankai University (Top 3\%)}{2020}
+\cventry{Nankai University Innovation Scholarship}{2017, 2018}
+\cventry{Provincial First Prize in Chinese Physics Competition}{2015}
+
+% =========================================================
+\section{Mentoring \& Teaching}
+% =========================================================
+
+\cventry{\textbf{Research Mentor}, Tan Lab, Children's Hospital of Philadelphia \& UPenn}{2022 -- Present}
+\hspace{1em}Mentor junior graduate and undergraduate students on projects in computational pathology and spatial omics,\par
+\hspace{1em}guiding method development, coding, and manuscript preparation.
+
+% =========================================================
+\section{Technical Skills}
+% =========================================================
+
+\textbf{Advanced:} Python, PyTorch, Deep Learning, Biomedical Imaging Analysis\\
+\textbf{Familiar:} R, C++
+
+% =========================================================
+\section{References}
+% =========================================================
+
+References available upon request.
+
+\end{document}

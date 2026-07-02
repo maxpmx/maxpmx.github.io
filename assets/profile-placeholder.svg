@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="title desc">
+  <title id="title">Minxing Pang profile placeholder</title>
+  <desc id="desc">Abstract academic portrait placeholder with initials MP.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102033"/>
+      <stop offset="0.52" stop-color="#1a3c6e"/>
+      <stop offset="1" stop-color="#cc7a29"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#06101d" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect width="900" height="760" rx="56" fill="url(#bg)"/>
+  <circle cx="224" cy="146" r="186" fill="url(#orb)"/>
+  <circle cx="742" cy="584" r="240" fill="#ffffff" opacity="0.10"/>
+  <path d="M89 570 C212 468 310 494 418 392 C558 259 654 264 813 170" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.28"/>
+  <path d="M109 622 C257 512 342 568 470 430 C592 299 690 304 820 236" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
+  <g filter="url(#shadow)">
+    <rect x="160" y="180" width="580" height="392" rx="46" fill="#ffffff" opacity="0.14"/>
+    <rect x="188" y="208" width="524" height="336" rx="34" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.24"/>
+  </g>
+  <text x="450" y="421" text-anchor="middle" fill="#ffffff" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="166" font-weight="800" letter-spacing="-12">MP</text>
+  <text x="450" y="489" text-anchor="middle" fill="#ffffff" opacity="0.78" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="3">AI · PATHOLOGY · OMICS</text>
+</svg>
