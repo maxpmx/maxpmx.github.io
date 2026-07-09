@@ -163,12 +163,9 @@ document.documentElement.classList.add("js");
       const factValue = fact.url
         ? el("a", { href: fact.url, ...externalAttrs(fact.url) }, fact.value)
         : document.createTextNode(fact.value);
-      const secondary = fact.secondaryLink
-        ? [document.createTextNode(" · "), el("a", { href: fact.secondaryLink.url, ...externalAttrs(fact.secondaryLink.url) }, fact.secondaryLink.label)]
-        : [];
       facts.append(el("div", { class: "profile-card__fact" },
         el("dt", { text: fact.label }),
-        el("dd", {}, factValue, secondary)
+        el("dd", {}, factValue)
       ));
     });
 

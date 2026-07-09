@@ -18,8 +18,7 @@ window.SITE_DATA = {
     {
       label: "Advisor",
       value: "Kai Tan, Ph.D.",
-      url: "https://genetics.med.upenn.edu/faculty-profile/8885111",
-      secondaryLink: { label: "Tan Lab", url: "https://www.med.upenn.edu/cci/tanlab/" }
+      url: "https://genetics.med.upenn.edu/faculty-profile/8885111"
     },
     { label: "Ph.D.", value: "Expected 2026" }
   ],
