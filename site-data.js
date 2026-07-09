@@ -9,9 +9,26 @@ window.SITE_DATA = {
   lastUpdated: "July 2026",
   profileImage: "assets/profile.jpg",
   cvPath: "assets/cv.pdf",
-  tagline: "Ph.D. candidate at Penn building AI for computational pathology and spatial omics.",
-  researchStatement: "I build deep-learning systems that turn routine tissue images into spatial molecular, cellular, and microenvironment readouts.",
-  focus: "Histology-to-omics modeling, tissue image understanding, and spatial microenvironment analysis.",
+  tagline: "Generative AI for computational pathology and spatial biology.",
+  introduction: "I build multimodal methods that connect routine histology with spatial molecular context—from query-driven synthesis of RNA and protein maps to unified cell segmentation and classification.",
+  researchStatement: "I develop computational methods that infer molecular context from tissue morphology, resolve cells and tissue structures, and integrate those results with spatial and single-cell data.",
+  focus: "Generative histology-to-omics models and unified tissue-image analysis.",
+  profileFacts: [
+    { label: "Affiliation", value: "University of Pennsylvania" },
+    {
+      label: "Advisor",
+      value: "Kai Tan, Ph.D.",
+      url: "https://genetics.med.upenn.edu/faculty-profile/8885111",
+      secondaryLink: { label: "Tan Lab", url: "https://www.med.upenn.edu/cci/tanlab/" }
+    },
+    { label: "Ph.D.", value: "Expected 2026" }
+  ],
+  researchPathway: [
+    "Routine histology",
+    "Cells + tissue structures",
+    "Spatial RNA + protein",
+    "Tissue biology"
+  ],
   interests: [
     "Computational Pathology",
     "Spatial Omics",
@@ -21,110 +38,142 @@ window.SITE_DATA = {
   contact: {
     email: "minxing@sas.upenn.edu",
     github: "https://github.com/maxpmx",
-    scholar: "https://scholar.google.com/citations?user=wZbrjsQAAAAJ"
+    scholar: "https://scholar.google.com/citations?user=wZbrjsQAAAAJ",
+    orcid: "https://orcid.org/0000-0001-5208-5972"
   },
   researchThemes: [
     {
-      icon: "✦",
-      title: "Histology-to-omics",
-      text: "Predicting spatial molecular measurements from routine tissue images."
+      figure: "omics",
+      title: "Virtual spatial omics",
+      text: "Inferring spatial RNA and protein maps from routine histology, from super-resolution prediction to text-guided generative modeling."
     },
     {
-      icon: "◎",
-      title: "Tissue-image AI",
-      text: "Unified segmentation and classification models for biomedical images."
+      figure: "unified",
+      title: "Unified tissue-image AI",
+      text: "Jointly segmenting and classifying cells and tissue structures with transformer-based models."
     },
     {
-      icon: "▣",
-      title: "Spatial microenvironments",
-      text: "Quantifying cell niches and disease-relevant tissue organization."
+      figure: "ecosystem",
+      title: "Tissue microenvironments",
+      text: "Integrating single-cell and spatial data to map bone-marrow niches and therapy-associated tumor ecosystems."
     }
   ],
   featuredWork: [
     {
-      title: "CelloType: A Unified Model for Segmentation and Classification of Tissue Images",
-      meta: "Nature Methods, 2025",
-      text: "Unified segmentation and classification for tissue images.",
+      label: "Lead work",
+      title: "TissueCraftAI: query-driven spatial omics from histology",
+      meta: "bioRxiv preprint · 2025",
+      text: "A text-guided generative framework that predicts spatial transcriptomic and proteomic maps from standard histology images.",
+      highlights: ["12M+ paired patches", "14 tissue types", "spatial RNA + protein"],
       links: [
-        { label: "Paper", url: "https://www.nature.com/articles/s41592-024-02513-1" },
+        { label: "Preprint", url: "https://doi.org/10.64898/2025.12.11.693669" },
+        { label: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/41415434/" }
+      ]
+    },
+    {
+      label: "Lead work",
+      title: "CelloType: one model for tissue segmentation and classification",
+      meta: "Nature Methods · 2025",
+      text: "An end-to-end transformer model that jointly detects, segments, and classifies cellular and noncellular structures in biomedical images.",
+      highlights: ["joint multitask learning", "multiscale annotation"],
+      links: [
+        { label: "Paper", url: "https://doi.org/10.1038/s41592-024-02513-1" },
         { label: "Code", url: "https://github.com/tanlabcode/CelloType" }
       ]
     },
     {
-      title: "Query-driven generative AI synthesizes multi-modal spatial omics from histology",
-      meta: "Under review, 2025",
-      text: "Generative framework for synthesizing spatial omics from histology.",
+      label: "Collaborative studies",
+      title: "Mapping disease microenvironments across scales",
+      meta: "Cell · 2024 / Nature Genetics · 2025",
+      text: "Single-cell, spatial, proteomic, and epigenomic atlases reveal human bone-marrow niches and treatment-driven rewiring in neuroblastoma.",
+      highlights: ["bone-marrow niches", "tumor microenvironment"],
       links: [
-        { label: "bioRxiv", url: "https://www.biorxiv.org/content/10.64898/2025.12.11.693669v1" }
+        { label: "Cell", url: "https://doi.org/10.1016/j.cell.2024.04.013" },
+        { label: "Nature Genetics", url: "https://doi.org/10.1038/s41588-025-02158-6" }
       ]
     }
   ],
   publications: [
     {
-      category: "journal",
+      category: "preprint",
+      date: "2025-12-13",
       year: "2025",
-      title: "CelloType: A Unified Model for Segmentation and Classification of Tissue Images",
+      title: "Query-driven generative AI synthesizes multi-modal spatial omics from histology",
+      authors: ["Pang M", "Roy TK", "Wu X", "Tan K"],
+      venue: "bioRxiv",
+      status: "Preprint",
+      role: "Lead author",
+      links: [
+        { label: "Preprint", url: "https://doi.org/10.64898/2025.12.11.693669" },
+        { label: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/41415434/" }
+      ]
+    },
+    {
+      category: "journal",
+      date: "2025-05-01",
+      year: "2025",
+      title: "Longitudinal single-cell multiomic atlas of high-risk neuroblastoma reveals chemotherapy-induced tumor microenvironment rewiring",
+      authors: ["Yu W", "Biyik-Sit R", "Uzun Y", "Chen CH", "Thadi A", "Sussman JH", "Pang M", "et al."],
+      venue: "Nature Genetics",
+      status: "Published",
+      role: "Co-author",
+      links: [
+        { label: "Paper", url: "https://doi.org/10.1038/s41588-025-02158-6" }
+      ]
+    },
+    {
+      category: "journal",
+      date: "2025-02-01",
+      year: "2025",
+      title: "CelloType: a unified model for segmentation and classification of tissue images",
       authors: ["Pang M", "Roy TK", "Wu X", "Tan K"],
       venue: "Nature Methods",
       status: "Published",
+      role: "Lead author",
       links: [
-        { label: "Paper", url: "https://www.nature.com/articles/s41592-024-02513-1" },
+        { label: "Paper", url: "https://doi.org/10.1038/s41592-024-02513-1" },
         { label: "Code", url: "https://github.com/tanlabcode/CelloType" }
       ]
     },
     {
       category: "journal",
+      date: "2024-06-06",
       year: "2024",
       title: "Mapping the cellular biogeography of human bone marrow niches using single-cell transcriptomics and proteomic imaging",
-      authors: ["Bandyopadhyay S", "Duffy M", "Ahn K", "Sussman J", "Pang M", "...", "Tan K"],
+      authors: ["Bandyopadhyay S", "Duffy MP", "Ahn KJ", "Sussman JH", "Pang M", "et al."],
       venue: "Cell",
       status: "Published",
+      role: "Co-author",
       links: [
-        { label: "Paper", url: "https://www.cell.com/cell/fulltext/S0092-8674(24)00408-2" }
-      ]
-    },
-    {
-      category: "journal",
-      year: "2025",
-      title: "Longitudinal single-cell multiomic atlas of high-risk neuroblastoma reveals chemotherapy-induced tumor microenvironment rewiring",
-      authors: ["Yu W", "Biyik-Sit R", "Uzun Y", "Chen CH", "Thadi A", "Sussman JH", "Pang M", "...", "Tan K"],
-      venue: "Nature Genetics",
-      status: "Published",
-      links: []
-    },
-    {
-      category: "conference",
-      year: "2020",
-      title: "Representation Learning and Translation between the Mouse and Human Brain using a Deep Transformer Architecture",
-      authors: ["Pang M", "Tegnér J"],
-      venue: "ICML 2020 Workshop on Computational Biology",
-      status: "Contributed Talk, Top 5%",
-      links: [
-        { label: "PDF", url: "https://icml-compbio.github.io/icml-website-2020/2020/papers/WCBICML2020_paper_29.pdf" },
-        { label: "Code", url: "https://github.com/maxpmx/scTT-pytorch" }
+        { label: "Paper", url: "https://doi.org/10.1016/j.cell.2024.04.013" }
       ]
     },
     {
       category: "preprint",
-      year: "2025",
-      title: "A Query-driven generative AI synthesizes multi-modal spatial omics from histology",
-      authors: ["Pang M", "Roy TK", "Wu X", "Tan K"],
-      venue: "Under review",
-      status: "Preprint",
-      links: [
-        { label: "bioRxiv", url: "https://www.biorxiv.org/content/10.64898/2025.12.11.693669v1" }
-      ]
-    },
-    {
-      category: "preprint",
+      date: "2021-11-28",
       year: "2021",
       title: "Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors",
       authors: ["Pang M", "Su K", "Li M"],
       venue: "bioRxiv",
       status: "Preprint",
+      role: "Lead author",
       links: [
-        { label: "bioRxiv", url: "https://www.biorxiv.org/content/10.1101/2021.02.28.433265" },
+        { label: "Preprint", url: "https://doi.org/10.1101/2021.11.28.470212" },
         { label: "Code", url: "https://github.com/maxpmx/HisToGene" }
+      ]
+    },
+    {
+      category: "conference",
+      date: "2020-07-01",
+      year: "2020",
+      title: "Representation Learning and Translation between the Mouse and Human Brain using a Deep Transformer Architecture",
+      authors: ["Pang M", "Tegnér J"],
+      venue: "ICML 2020 Workshop on Computational Biology",
+      status: "Contributed Talk",
+      role: "Lead author",
+      links: [
+        { label: "PDF", url: "https://icml-compbio.github.io/icml-website-2020/2020/papers/WCBICML2020_paper_29.pdf" },
+        { label: "Code", url: "https://github.com/maxpmx/scTT-pytorch" }
       ]
     }
   ],
@@ -133,19 +182,22 @@ window.SITE_DATA = {
       title: "Towards Unified Segmentation and Classification of Tissue Images",
       venue: "HTAN-HuBMAP Joint Meeting, Stanford University",
       location: "California",
-      date: "March 2024"
+      date: "March 2024",
+      sortDate: "2024-03-01"
     },
     {
       title: "Towards Unified Segmentation and Classification of Tissue Images",
       venue: "Schmidt Center Symposium: Biomedical Science and AI, Koch Institute, MIT",
       location: "Massachusetts",
-      date: "April 2025"
+      date: "April 2025",
+      sortDate: "2025-04-01"
     },
     {
       title: "Generative AI synthesizes multi-modal spatial omics from histology",
       venue: "Shanghai Medical College, Fudan University",
       location: "China",
       date: "December 2024",
+      sortDate: "2024-12-01",
       note: "Invited"
     },
     {
@@ -153,6 +205,7 @@ window.SITE_DATA = {
       venue: "School of Medicine, Zhejiang University",
       location: "China",
       date: "July 2025",
+      sortDate: "2025-07-01",
       note: "Invited"
     }
   ],
@@ -162,7 +215,8 @@ window.SITE_DATA = {
       location: "Philadelphia, PA, USA",
       degree: "Ph.D. in Applied Mathematics and Computational Science",
       date: "2022 - 2026 expected",
-      advisor: "Kai Tan, Ph.D., Professor of Pediatrics"
+      advisor: "Kai Tan, Ph.D., Professor of Pediatrics",
+      advisorUrl: "https://genetics.med.upenn.edu/faculty-profile/8885111"
     },
     {
       institution: "King Abdullah University of Science and Technology (KAUST)",

@@ -1,21 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minxing Pang | Computational Pathology & Spatial Omics</title>
-  <meta name="description" content="Minxing Pang is a Ph.D. candidate at the University of Pennsylvania building deep learning methods for computational pathology, biomedical imaging, and spatial omics." />
-  <meta name="author" content="Minxing Pang" />
-  <meta name="theme-color" content="#102033" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minxing Pang | Computational Pathology &amp; Spatial Biology</title>
+  <meta name="description" content="Minxing Pang develops multimodal and generative AI for computational pathology and spatial biology at the University of Pennsylvania.">
+  <meta name="author" content="Minxing Pang">
+  <meta name="theme-color" content="#121e30">
+  <link rel="canonical" href="https://maxpmx.github.io/">
 
-  <meta property="og:title" content="Minxing Pang | Academic Website" />
-  <meta property="og:description" content="Deep learning for computational pathology, biomedical imaging, and spatial omics." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/profile.jpg" />
+  <meta property="og:title" content="Minxing Pang | Computational Pathology &amp; Spatial Biology">
+  <meta property="og:description" content="Multimodal and generative AI connecting tissue morphology with spatial molecular context.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maxpmx.github.io/">
+  <meta property="og:image" content="https://maxpmx.github.io/assets/profile.jpg">
+  <meta property="og:image:alt" content="Portrait of Minxing Pang">
+  <meta name="twitter:card" content="summary">
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="stylesheet" href="styles.css?v=20260702-profile" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css?v=20260709-research">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -34,9 +38,9 @@
         <a href="#research">Research</a>
         <a href="#publications">Papers</a>
         <a href="#talks">Talks</a>
-        <a href="#education">Training</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme">
           <span class="theme-toggle__icon" aria-hidden="true">◐</span>
         </button>
       </div>
@@ -47,20 +51,34 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__background" aria-hidden="true"></div>
       <div class="container hero__grid">
-        <div class="hero__content reveal">
-          <p class="eyebrow" id="hero-kicker"></p>
-          <h1 id="hero-title"></h1>
-          <p class="hero__subtitle" id="hero-subtitle"></p>
-          <div class="hero__actions" id="hero-actions"></div>
-          <div class="hero__chips" id="hero-chips" aria-label="Research interests"></div>
+        <div class="hero__content">
+          <p class="eyebrow" id="hero-kicker">Ph.D. candidate · Applied Mathematics · Penn</p>
+          <h1 id="hero-title">Minxing Pang</h1>
+          <p class="hero__headline" id="hero-headline">Generative AI for computational pathology and spatial biology.</p>
+          <p class="hero__subtitle" id="hero-subtitle">I build multimodal methods that connect routine histology with spatial molecular context—from query-driven synthesis of RNA and protein maps to unified cell segmentation and classification.</p>
+          <div class="hero__actions" id="hero-actions">
+            <a class="button button--primary" href="#publications">View publications</a>
+            <a class="button" href="assets/cv.pdf">CV</a>
+            <a class="button" href="mailto:minxing@sas.upenn.edu">Email</a>
+          </div>
+          <nav class="hero__profile-links" id="hero-profile-links" aria-label="Academic profiles">
+            <a href="https://scholar.google.com/citations?user=wZbrjsQAAAAJ">Google Scholar ↗</a>
+            <a href="https://github.com/maxpmx">GitHub ↗</a>
+            <a href="https://orcid.org/0000-0001-5208-5972">ORCID ↗</a>
+          </nav>
         </div>
-        <aside class="profile-card reveal" aria-label="Profile summary">
+        <aside class="profile-card" aria-label="Profile summary">
           <div class="profile-card__visual">
-            <img id="profile-image" src="assets/profile.jpg" alt="Minxing Pang portrait" loading="eager" />
+            <img id="profile-image" src="assets/profile.jpg" alt="Minxing Pang portrait" width="800" height="800" loading="eager">
           </div>
           <div class="profile-card__body">
-            <p class="profile-card__label">Current focus</p>
-            <p id="profile-focus"></p>
+            <p class="profile-card__label">At a glance</p>
+            <p id="profile-focus">Generative histology-to-omics models and unified tissue-image analysis.</p>
+            <dl class="profile-card__facts" id="profile-facts">
+              <div class="profile-card__fact"><dt>Affiliation</dt><dd>University of Pennsylvania</dd></div>
+              <div class="profile-card__fact"><dt>Advisor</dt><dd><a href="https://genetics.med.upenn.edu/faculty-profile/8885111">Kai Tan, Ph.D.</a> · <a href="https://www.med.upenn.edu/cci/tanlab/">Tan Lab</a></dd></div>
+              <div class="profile-card__fact"><dt>Ph.D.</dt><dd>Expected 2026</dd></div>
+            </dl>
           </div>
         </aside>
       </div>
@@ -70,10 +88,13 @@
       <div class="container section__grid">
         <div class="section__intro reveal">
           <p class="eyebrow">Research</p>
-          <h2 id="research-title">Histology → spatial molecular readouts.</h2>
-          <p id="research-statement"></p>
+          <h2 id="research-title">From histology to spatial biology.</h2>
+          <p id="research-statement">I develop computational methods that infer molecular context from tissue morphology, resolve cells and tissue structures, and integrate those results with spatial and single-cell data.</p>
         </div>
-        <div class="research-cards" id="research-cards"></div>
+        <div class="research-body">
+          <div class="research-pathway reveal" id="research-pathway" role="group" aria-label="Research workflow"></div>
+          <div class="research-cards" id="research-cards"></div>
+        </div>
       </div>
     </section>
 
@@ -81,7 +102,8 @@
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">Highlights</p>
-          <h2 id="featured-title">Selected work</h2>
+          <h2 id="featured-title">Methods in context</h2>
+          <p>Lead methods and collaborative studies that connect tissue images, spatial measurements, and disease biology.</p>
         </div>
         <div class="featured-grid" id="featured-grid"></div>
       </div>
@@ -92,9 +114,8 @@
         <div class="section-heading reveal">
           <p class="eyebrow">Papers</p>
           <h2 id="publications-title">Publications and preprints</h2>
-          <p>Selected work; author name is highlighted.</p>
+          <p>Selected work in reverse chronological order; author name is highlighted.</p>
         </div>
-        <div class="publication-toolbar reveal" id="publication-toolbar" aria-label="Publication filters"></div>
         <div class="publication-list" id="publication-list"></div>
       </div>
     </section>
@@ -113,7 +134,7 @@
     <section class="section" id="education" aria-labelledby="education-title">
       <div class="container section__grid">
         <div class="section__intro reveal">
-          <p class="eyebrow">Training</p>
+          <p class="eyebrow">Education</p>
           <h2 id="education-title">Education</h2>
           <p>Applied mathematics, computational science, machine learning, and bioscience.</p>
         </div>
@@ -126,7 +147,7 @@
         <div>
           <p class="eyebrow">Contact</p>
           <h2 id="contact-title">Get in touch.</h2>
-          <p id="contact-text"></p>
+          <p id="contact-text">For collaboration, talks, or research conversations, contact Minxing by email or visit the profiles below.</p>
         </div>
         <div class="contact-links" id="contact-links"></div>
       </div>
@@ -135,12 +156,12 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p id="footer-name"></p>
-      <p id="footer-updated"></p>
+      <p id="footer-name">© 2026 Minxing Pang</p>
+      <p id="footer-updated">Last updated: July 2026</p>
     </div>
   </footer>
 
-  <script src="site-data.js?v=20260702-profile"></script>
-  <script src="script.js?v=20260702-profile"></script>
+  <script src="site-data.js?v=20260709-research"></script>
+  <script src="script.js?v=20260709-research"></script>
 </body>
 </html>

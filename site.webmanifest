@@ -3,8 +3,8 @@
   "short_name": "Minxing Pang",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f7f5ef",
-  "theme_color": "#102033",
+  "background_color": "#f5f2eb",
+  "theme_color": "#121e30",
   "icons": [
     {
       "src": "assets/favicon.svg",
