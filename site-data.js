@@ -59,6 +59,7 @@ window.SITE_DATA = {
   ],
   featuredWork: [
     {
+      figure: "omics",
       label: "Lead work",
       title: "TissueCraftAI: query-driven spatial omics from histology",
       meta: "bioRxiv preprint · 2025",
@@ -70,6 +71,7 @@ window.SITE_DATA = {
       ]
     },
     {
+      figure: "unified",
       label: "Lead work",
       title: "CelloType: one model for tissue segmentation and classification",
       meta: "Nature Methods · 2025",
@@ -81,6 +83,7 @@ window.SITE_DATA = {
       ]
     },
     {
+      figure: "ecosystem",
       label: "Collaborative studies",
       title: "Mapping disease microenvironments across scales",
       meta: "Cell · 2024 / Nature Genetics · 2025",

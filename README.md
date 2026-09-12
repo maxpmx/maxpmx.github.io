@@ -26,6 +26,8 @@ publications, presentations, education, awards, mentoring, and skills. Update th
 - `index.html`: page structure and static fallback profile.
 - `styles.css`: responsive layout, typography, themes, and print styles.
 - `script.js`: content rendering, accessible tabs, publication filters, and search.
+- `research-figures.js`: shared SVG research schematics and compact project illustrations.
+  Figure colors are defined by the `--fig-*` variables in `styles.css`.
 - `assets/minxing-pang.png`: current portrait, supplied September 2026.
 - `assets/cv.pdf`: public CV; its source is `assets/cv-public-source.tex`.
 
