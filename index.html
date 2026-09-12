@@ -6,162 +6,135 @@
   <title>Minxing Pang | Computational Pathology &amp; Spatial Biology</title>
   <meta name="description" content="Minxing Pang develops multimodal and generative AI for computational pathology and spatial biology at the University of Pennsylvania.">
   <meta name="author" content="Minxing Pang">
-  <meta name="theme-color" content="#121e30">
+  <meta name="theme-color" content="#f8f9fb">
   <link rel="canonical" href="https://maxpmx.github.io/">
-
   <meta property="og:title" content="Minxing Pang | Computational Pathology &amp; Spatial Biology">
   <meta property="og:description" content="Multimodal and generative AI connecting tissue morphology with spatial molecular context.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://maxpmx.github.io/">
-  <meta property="og:image" content="https://maxpmx.github.io/assets/profile.jpg">
+  <meta property="og:image" content="https://maxpmx.github.io/assets/minxing-pang.png">
   <meta property="og:image:alt" content="Portrait of Minxing Pang">
   <meta name="twitter:card" content="summary">
-
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="styles.css?v=20260709-research">
+  <link rel="stylesheet" href="styles.css?v=20260912-tabs">
+  <script>
+    try {
+      const theme = localStorage.getItem("preferred-theme");
+      document.documentElement.dataset.theme = theme === "dark" || theme === "light" ? theme : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    } catch (_) {}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" data-elevate>
-    <nav class="nav-shell" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Minxing Pang home">
-        <span class="brand-mark" aria-hidden="true">MP</span>
-        <span class="brand-text">Minxing Pang</span>
-      </a>
-      <button class="mobile-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links" id="site-nav">
-        <a href="#research">Research</a>
-        <a href="#publications">Papers</a>
-        <a href="#talks">Talks</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme">
-          <span class="theme-toggle__icon" aria-hidden="true">◐</span>
-        </button>
-      </div>
-    </nav>
+  <header class="site-header shell">
+    <a class="brand" href="#overview" aria-label="Minxing Pang home"><span class="brand-mark" aria-hidden="true">mp.</span><span>Minxing Pang <span class="brand-divider" aria-hidden="true">/</span> <span class="brand-caption">Academic profile</span></span></a>
+    <div class="header-actions">
+      <a class="header-cv" href="assets/cv.pdf" target="_blank" rel="noopener">Curriculum vitae <span aria-hidden="true">↗</span></a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17Z"/></svg></button>
+    </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero__background" aria-hidden="true"></div>
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <p class="eyebrow" id="hero-kicker">Ph.D. candidate · Applied Mathematics · Penn</p>
-          <h1 id="hero-title">Minxing Pang</h1>
-          <p class="hero__headline" id="hero-headline">Generative AI for computational pathology and spatial biology.</p>
-          <p class="hero__subtitle" id="hero-subtitle">I build multimodal methods that connect routine histology with spatial molecular context—from query-driven synthesis of RNA and protein maps to unified cell segmentation and classification.</p>
-          <div class="hero__actions" id="hero-actions">
-            <a class="button button--primary" href="#publications">View publications</a>
-            <a class="button" href="assets/cv.pdf">CV</a>
-            <a class="button" href="mailto:minxing@sas.upenn.edu">Email</a>
-          </div>
-          <nav class="hero__profile-links" id="hero-profile-links" aria-label="Academic profiles">
-            <a href="https://scholar.google.com/citations?user=wZbrjsQAAAAJ">Google Scholar ↗</a>
-            <a href="https://github.com/maxpmx">GitHub ↗</a>
-            <a href="https://orcid.org/0000-0001-5208-5972">ORCID ↗</a>
-          </nav>
-        </div>
-        <aside class="profile-card" aria-label="Profile summary">
-          <div class="profile-card__visual">
-            <img id="profile-image" src="assets/profile.jpg" alt="Minxing Pang portrait" width="800" height="800" loading="eager">
-          </div>
-          <div class="profile-card__body">
-            <p class="profile-card__label">At a glance</p>
-            <p id="profile-focus">Generative histology-to-omics models and unified tissue-image analysis.</p>
-            <dl class="profile-card__facts" id="profile-facts">
-              <div class="profile-card__fact"><dt>Affiliation</dt><dd>University of Pennsylvania</dd></div>
-              <div class="profile-card__fact"><dt>Advisor</dt><dd><a href="https://genetics.med.upenn.edu/faculty-profile/8885111">Kai Tan, Ph.D.</a></dd></div>
-              <div class="profile-card__fact"><dt>Ph.D.</dt><dd>Expected 2026</dd></div>
-            </dl>
-          </div>
-        </aside>
+  <div class="site-layout shell">
+    <aside class="profile" aria-label="Profile summary">
+      <img class="profile-photo" id="profile-image" src="assets/minxing-pang.png" alt="Minxing Pang portrait" width="1254" height="1254" fetchpriority="high">
+      <div class="profile-identity">
+        <h1 id="profile-name">Minxing Pang</h1>
+        <p class="profile-role">Ph.D. Candidate</p>
+        <p class="profile-field">Applied Mathematics &amp;<br>Computational Science</p>
+        <p class="profile-affiliation" id="profile-affiliation">University of Pennsylvania</p>
+        <p class="profile-location" id="profile-location">Philadelphia, PA</p>
       </div>
-    </section>
-
-    <section class="section section--tight" id="research" aria-labelledby="research-title">
-      <div class="container section__grid">
-        <div class="section__intro reveal">
-          <p class="eyebrow">Research</p>
-          <h2 id="research-title">From histology to spatial biology.</h2>
-          <p id="research-statement">I develop computational methods that infer molecular context from tissue morphology, resolve cells and tissue structures, and integrate those results with spatial and single-cell data.</p>
-        </div>
-        <div class="research-body">
-          <div class="research-pathway reveal" id="research-pathway" role="group" aria-label="Research workflow"></div>
-          <div class="research-cards" id="research-cards"></div>
-        </div>
+      <div class="profile-details">
+        <dl class="profile-facts" id="profile-facts">
+          <div><dt>Advisor</dt><dd><a href="https://genetics.med.upenn.edu/faculty-profile/8885111" target="_blank" rel="noopener noreferrer">Kai Tan, Ph.D.</a></dd></div>
+          <div><dt>Ph.D.</dt><dd>Expected 2026</dd></div>
+        </dl>
+        <a class="profile-email" id="profile-email" href="mailto:minxing@sas.upenn.edu">minxing@sas.upenn.edu <span aria-hidden="true">↗</span></a>
+        <nav class="profile-links" id="profile-links" aria-label="Academic profiles">
+          <a href="https://scholar.google.com/citations?user=wZbrjsQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/maxpmx" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://orcid.org/0000-0001-5208-5972" target="_blank" rel="noopener noreferrer">ORCID <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
-    </section>
+      <a class="profile-cv button" id="profile-cv" href="assets/cv.pdf" target="_blank" rel="noopener">View curriculum vitae <span aria-hidden="true">↗</span></a>
+    </aside>
 
-    <section class="section section--muted" id="featured" aria-labelledby="featured-title">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Highlights</p>
-          <h2 id="featured-title">Methods in context</h2>
-          <p>Lead methods and collaborative studies that connect tissue images, spatial measurements, and disease biology.</p>
+    <main id="main" class="main-content" tabindex="-1">
+      <nav class="section-navigation" aria-label="Main navigation">
+        <div class="tabs" role="tablist" aria-label="Profile sections">
+          <a id="tab-overview" role="tab" href="#overview" aria-controls="overview" aria-selected="true">Overview</a>
+          <a id="tab-research" role="tab" href="#research" aria-controls="research" aria-selected="false" tabindex="-1">Research</a>
+          <a id="tab-publications" role="tab" href="#publications" aria-controls="publications" aria-selected="false" tabindex="-1">Publications</a>
+          <a id="tab-talks" role="tab" href="#talks" aria-controls="talks" aria-selected="false" tabindex="-1">Talks</a>
+          <a id="tab-education" role="tab" href="#education" aria-controls="education" aria-selected="false" tabindex="-1">Education</a>
+          <a id="tab-contact" role="tab" href="#contact" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</a>
         </div>
-        <div class="featured-grid" id="featured-grid"></div>
-      </div>
-    </section>
+      </nav>
 
-    <section class="section" id="publications" aria-labelledby="publications-title">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Papers</p>
-          <h2 id="publications-title">Publications and preprints</h2>
-          <p>Selected work in reverse chronological order; author name is highlighted.</p>
+      <section class="tab-panel overview" id="overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+        <div class="intro">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Computational pathology &amp; spatial biology</p>
+          <h2>Connecting tissue images<br class="desktop-break"> to <em>molecular insight.</em></h2>
+          <p class="intro-lead" id="overview-tagline">Generative AI for computational pathology and spatial biology.</p>
+          <p class="intro-description" id="overview-introduction">I build multimodal methods that connect routine histology with spatial molecular context—from query-driven synthesis of RNA and protein maps to unified cell segmentation and classification.</p>
+          <div class="intro-actions"><a class="button button--primary" href="#research">Explore my research <span aria-hidden="true">→</span></a><a class="text-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="interest-strip" id="interest-strip" aria-label="Research interests"></div>
+        <div class="subsection-heading"><h3>Selected work</h3><a class="text-link" href="#publications">All publications <span aria-hidden="true">→</span></a></div>
+        <div class="selected-work" id="selected-work"></div>
+        <noscript><p>This site uses JavaScript to switch sections. You can read the complete <a href="assets/cv.pdf">curriculum vitae</a> or visit <a href="https://scholar.google.com/citations?user=wZbrjsQAAAAJ">Google Scholar</a>.</p></noscript>
+      </section>
+
+      <section class="tab-panel" id="research" role="tabpanel" aria-labelledby="tab-research" tabindex="0" hidden>
+        <div class="panel-heading"><p class="eyebrow">Research</p><h2>From histology to spatial biology.</h2><p id="research-statement"></p></div>
+        <ol class="research-pathway" id="research-pathway" aria-label="Research workflow"></ol>
+        <div class="research-cards" id="research-cards"></div>
+        <div class="subsection-heading"><h3>Methods in context</h3><a class="text-link" href="#publications">Publications <span aria-hidden="true">→</span></a></div>
+        <div class="featured-list" id="featured-list"></div>
+      </section>
+
+      <section class="tab-panel" id="publications" role="tabpanel" aria-labelledby="tab-publications" tabindex="0" hidden>
+        <div class="panel-heading"><p class="eyebrow">Publications</p><h2>Papers &amp; preprints.</h2><p>Selected work, most recent first. My name is highlighted.</p></div>
+        <div class="publication-toolbar">
+          <div class="publication-filters" role="group" aria-label="Filter publications">
+            <button type="button" data-filter="all" aria-pressed="true">All <span id="publication-total"></span></button>
+            <button type="button" data-filter="journal" aria-pressed="false">Journals</button>
+            <button type="button" data-filter="preprint" aria-pressed="false">Preprints</button>
+            <button type="button" data-filter="conference" aria-pressed="false">Conference</button>
+          </div>
+          <label class="publication-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search publications</span><input id="publication-search" type="search" placeholder="Search papers…" autocomplete="off"></label>
         </div>
         <div class="publication-list" id="publication-list"></div>
-      </div>
-    </section>
+        <p class="empty-state" id="publication-empty" hidden>No publications match your search. Try another term or select All.</p>
+        <div class="publication-footer"><p id="publication-status" role="status" aria-live="polite" aria-atomic="true"></p><nav id="publication-pagination" class="pagination" aria-label="Publication pages"></nav></div>
+        <a class="text-link scholar-link" id="all-scholar" href="https://scholar.google.com/citations?user=wZbrjsQAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar <span aria-hidden="true">↗</span></a>
+      </section>
 
-    <section class="section section--muted" id="talks" aria-labelledby="talks-title">
-      <div class="container section__grid">
-        <div class="section__intro reveal">
-          <p class="eyebrow">Talks</p>
-          <h2 id="talks-title">Selected presentations</h2>
-          <p>Computational pathology, tissue-image AI, and generative spatial omics.</p>
-        </div>
+      <section class="tab-panel" id="talks" role="tabpanel" aria-labelledby="tab-talks" tabindex="0" hidden>
+        <div class="panel-heading"><p class="eyebrow">Talks</p><h2>Selected presentations.</h2><p>Conversations on tissue-image AI and generative spatial omics.</p></div>
         <div class="timeline" id="talks-list"></div>
-      </div>
-    </section>
+        <div class="panel-note"><span>For speaking invitations and research conversations.</span><a class="text-link" href="#contact">Get in touch <span aria-hidden="true">→</span></a></div>
+      </section>
 
-    <section class="section" id="education" aria-labelledby="education-title">
-      <div class="container section__grid">
-        <div class="section__intro reveal">
-          <p class="eyebrow">Education</p>
-          <h2 id="education-title">Education</h2>
-          <p>Applied mathematics, computational science, machine learning, and bioscience.</p>
-        </div>
-        <div class="timeline" id="education-list"></div>
-      </div>
-    </section>
+      <section class="tab-panel" id="education" role="tabpanel" aria-labelledby="tab-education" tabindex="0" hidden>
+        <div class="panel-heading"><p class="eyebrow">Background</p><h2>Education &amp; experience.</h2><p>Applied mathematics, computational science, and bioscience.</p></div>
+        <div class="timeline education-list" id="education-list"></div>
+        <details class="background-details"><summary>Honors &amp; awards <span id="award-count" class="count"></span></summary><ul id="awards-list" class="awards-list"></ul></details>
+        <details class="background-details"><summary>Mentoring &amp; technical skills</summary><div id="mentoring-list"></div><div id="skills-list" class="skills-list"></div></details>
+      </section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-card reveal">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">Get in touch.</h2>
-          <p id="contact-text">For collaboration, talks, or research conversations, contact Minxing by email or visit the profiles below.</p>
-        </div>
-        <div class="contact-links" id="contact-links"></div>
-      </div>
-    </section>
-  </main>
+      <section class="tab-panel" id="contact" role="tabpanel" aria-labelledby="tab-contact" tabindex="0" hidden>
+        <div class="panel-heading"><p class="eyebrow">Contact</p><h2>Let’s connect.</h2><p>For collaborations, talks, or a conversation about computational pathology and spatial biology.</p></div>
+        <a class="contact-email" id="contact-email" href="mailto:minxing@sas.upenn.edu"><span class="eyebrow">Email</span><span class="contact-email-address">minxing@sas.upenn.edu <span aria-hidden="true">↗</span></span></a>
+        <div class="contact-profiles" id="contact-profiles"></div>
+        <div class="contact-affiliation"><p class="eyebrow">Based at</p><h3 id="contact-affiliation">University of Pennsylvania</h3><p id="contact-location">Philadelphia, PA</p></div>
+      </section>
+    </main>
+  </div>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p id="footer-name">© 2026 Minxing Pang</p>
-      <p id="footer-updated">Last updated: July 2026</p>
-    </div>
-  </footer>
-
-  <script src="site-data.js?v=20260709-research"></script>
-  <script src="script.js?v=20260709-research"></script>
+  <footer class="site-footer shell"><p id="footer-name">© 2026 Minxing Pang</p><p id="footer-updated">Updated September 2026</p></footer>
+  <script src="site-data.js?v=20260912-tabs"></script>
+  <script src="script.js?v=20260912-tabs"></script>
 </body>
 </html>

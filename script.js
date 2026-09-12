@@ -1,5 +1,3 @@
-document.documentElement.classList.add("js");
-
 (() => {
   const data = window.SITE_DATA;
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -126,300 +124,297 @@ document.documentElement.classList.add("js");
       </svg>`
   };
 
-  const highlightAuthor = (author) => {
-    const span = el("span", { text: author });
-    if (/^Pang M$/.test(author)) span.className = "me";
-    return span;
-  };
-
   const setText = (selector, text) => {
     const node = $(selector);
     if (node) node.textContent = text || "";
   };
+  const renderLinks = (links) => el("div", { class: "link-row" }, (links || []).map((item) => link(item.label, item.url)));
+  const profiles = [
+    { label: "Google Scholar", url: data.contact.scholar, description: "Publications & citations" },
+    { label: "GitHub", url: data.contact.github, description: "Code & research software" },
+    { label: "ORCID", url: data.contact.orcid, description: "Researcher profile" }
+  ];
 
-  const renderHero = () => {
-    setText("#hero-kicker", `Ph.D. candidate · Applied Mathematics · Penn`);
-    setText("#hero-title", data.name);
-    setText("#hero-headline", data.tagline);
-    setText("#hero-subtitle", data.introduction);
-    setText("#profile-focus", data.focus);
-
-    const profileImage = $("#profile-image");
-    if (profileImage) {
-      const fallback = "assets/profile-placeholder.svg";
-      profileImage.src = data.profileImage || fallback;
-      profileImage.alt = `${data.name} portrait`;
-      profileImage.addEventListener("error", () => {
-        if (!profileImage.src.endsWith(fallback)) {
-          profileImage.src = fallback;
-          profileImage.alt = `${data.name} initials`;
-        }
-      }, { once: true });
-    }
-
-    const facts = $("#profile-facts");
-    facts.replaceChildren();
-    data.profileFacts?.forEach((fact) => {
-      const factValue = fact.url
-        ? el("a", { href: fact.url, ...externalAttrs(fact.url) }, fact.value)
-        : document.createTextNode(fact.value);
-      facts.append(el("div", { class: "profile-card__fact" },
-        el("dt", { text: fact.label }),
-        el("dd", {}, factValue)
-      ));
-    });
-
-    const actions = $("#hero-actions");
-    actions.replaceChildren();
-    actions.append(
-      el("a", { href: "#publications", class: "button button--primary" }, "View publications"),
-      el("a", { href: data.cvPath, class: "button" }, "CV"),
-      el("a", { href: `mailto:${data.contact.email}`, class: "button" }, "Email")
-    );
-
-    const profileLinks = $("#hero-profile-links");
-    profileLinks.replaceChildren();
-    [
-      { label: "Google Scholar", url: data.contact.scholar },
-      { label: "GitHub", url: data.contact.github },
-      { label: "ORCID", url: data.contact.orcid }
-    ].forEach((item) => profileLinks.append(el("a", { href: item.url, ...externalAttrs(item.url) }, `${item.label} ↗`)));
+  const renderProfile = () => {
+    setText("#profile-name", data.name);
+    setText("#profile-affiliation", data.affiliation);
+    setText("#profile-location", data.location);
+    const photo = $("#profile-image");
+    photo.addEventListener("error", () => {
+      photo.src = "assets/profile-placeholder.svg";
+      photo.alt = `${data.name} initials`;
+    }, { once: true });
+    photo.src = data.profileImage;
+    photo.alt = `${data.name} portrait`;
+    $("#profile-cv").href = data.cvPath;
+    $(".header-cv").href = data.cvPath;
+    $("#profile-email").href = `mailto:${data.contact.email}`;
+    $("#profile-email").replaceChildren(document.createTextNode(data.contact.email), el("span", { "aria-hidden": "true", text: "↗" }));
+    $("#profile-facts").replaceChildren(...data.profileFacts.filter((fact) => fact.label !== "Affiliation").map((fact) =>
+      el("div", {}, el("dt", { text: fact.label }), el("dd", {}, fact.url ? el("a", { href: fact.url, ...externalAttrs(fact.url), text: fact.value }) : fact.value))
+    ));
+    $("#profile-links").replaceChildren(...profiles.map((profile) => link(profile.label, profile.url, "profile-link")));
+    setText("#overview-tagline", data.tagline);
+    setText("#overview-introduction", data.introduction);
+    $("#interest-strip").replaceChildren(...data.interests.map((interest) => el("span", { text: interest })));
+    $("#selected-work").replaceChildren(...data.featuredWork.slice(0, 2).map((work) => {
+      const [name, ...description] = work.title.split(":");
+      return el("article", { class: "selected-card" },
+        el("span", { class: "work-meta", text: work.meta }),
+        el("h4", { text: name }),
+        el("p", { text: description.join(":").trim() || work.text }),
+        link(work.links[0].label === "Preprint" ? "Read preprint" : "Read paper", work.links[0].url)
+      );
+    }));
   };
 
   const renderResearch = () => {
     setText("#research-statement", data.researchStatement);
-    const pathway = $("#research-pathway");
-    pathway.replaceChildren();
-    data.researchPathway?.forEach((step, index) => {
-      pathway.append(el("div", { class: "research-pathway__step" },
-        el("span", { class: "research-pathway__number", text: String(index + 1).padStart(2, "0") }),
-        el("span", { text: step })
-      ));
-    });
-
-    const container = $("#research-cards");
-    container.replaceChildren();
-    data.researchThemes.forEach((theme) => {
-      container.append(el("article", { class: "research-card reveal" },
+    $("#research-pathway").replaceChildren(...data.researchPathway.map((step, index) =>
+      el("li", {}, el("span", { class: "step-number", text: String(index + 1).padStart(2, "0"), "aria-hidden": "true" }), step)
+    ));
+    $("#research-cards").replaceChildren(...data.researchThemes.map((theme) =>
+      el("article", { class: "research-card" },
         el("div", { class: "research-card__figure", html: researchFigures[theme.figure] || "", "aria-hidden": "true" }),
-        el("h3", { text: theme.title }),
-        el("p", { text: theme.text })
-      ));
-    });
-  };
-
-  const renderFeatured = () => {
-    const container = $("#featured-grid");
-    data.featuredWork.forEach((item, index) => {
-      const highlights = item.highlights?.length
-        ? el("ul", { class: "feature-card__highlights" }, item.highlights.map((highlight) => el("li", { text: highlight })))
-        : null;
-
-      container.append(el("article", { class: `feature-card reveal${index === 0 ? " feature-card--lead" : ""}` },
-        el("div", { class: "feature-card__topline" },
-          el("p", { class: "feature-card__label", text: item.label }),
-          el("span", { class: "feature-card__number", text: String(index + 1).padStart(2, "0"), "aria-hidden": "true" })
+        el("h3", { text: theme.title }), el("p", { text: theme.text })
+      )
+    ));
+    $("#featured-list").replaceChildren(...data.featuredWork.map((work, index) =>
+      el("details", { class: "feature-details" },
+        el("summary", {},
+          el("span", { class: "feature-number", text: String(index + 1).padStart(2, "0"), "aria-hidden": "true" }),
+          el("span", {}, el("span", { class: "feature-summary-title", text: work.title }), el("span", { class: "feature-summary-meta", text: `${work.meta} · ${work.label}` }))
         ),
-        el("p", { class: "feature-card__meta", text: item.meta }),
-        el("h3", { text: item.title }),
-        el("p", { class: "feature-card__description", text: item.text }),
-        highlights,
-        el("div", { class: "link-row" }, item.links.map((itemLink) => link(itemLink.label, itemLink.url)))
-      ));
+        el("div", { class: "feature-body" },
+          el("p", { text: work.text }),
+          el("ul", { class: "feature-highlights" }, (work.highlights || []).map((highlight) => el("li", { text: highlight }))),
+          renderLinks(work.links)
+        )
+      )
+    ));
+  };
+
+  const categoryLabels = { journal: "Journal", preprint: "Preprint", conference: "Conference" };
+  const papers = data.publications.slice().sort((a, b) => String(b.date || b.year).localeCompare(String(a.date || a.year)));
+  const publicationState = { filter: "all", query: "", page: 1 };
+  const pageSize = 3;
+  const matchingPapers = () => {
+    const terms = publicationState.query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    return papers.filter((paper) => {
+      const searchable = [paper.title, paper.venue, paper.year, paper.status, paper.role, categoryLabels[paper.category], ...paper.authors, ...(paper.links || []).map((item) => item.url)].join(" ").toLowerCase();
+      return (publicationState.filter === "all" || paper.category === publicationState.filter) && terms.every((term) => searchable.includes(term));
     });
   };
-
-  const categoryLabels = {
-    all: "All",
-    journal: "Journals",
-    conference: "Conference",
-    preprint: "Preprints"
-  };
-
-  const renderPublicationItem = (paper) => {
-    const authors = el("p", { class: "publication-item__authors" });
-    paper.authors.forEach((author, idx) => {
-      authors.append(highlightAuthor(author));
-      if (idx < paper.authors.length - 1) authors.append(document.createTextNode(", "));
+  const renderPublication = (paper) => {
+    const authors = el("p", { class: "publication-authors" });
+    paper.authors.forEach((author, index) => {
+      if (index) authors.append(document.createTextNode(", "));
+      authors.append(el(author === "Pang M" ? "strong" : "span", { class: author === "Pang M" ? "me" : "", text: author }));
     });
-
-    const venue = el("p", { class: "publication-item__venue" },
-      el("strong", { text: paper.venue }),
-      document.createTextNode(` · ${paper.year}`),
-      paper.status ? document.createTextNode(` · ${paper.status}`) : ""
-    );
-
-    const badges = el("div", { class: "publication-badges" },
-      paper.role ? el("span", { class: "badge badge--role", text: paper.role }) : null,
-      el("span", { class: "badge", text: categoryLabels[paper.category] || paper.category })
-    );
-
-    const links = paper.links?.length ? el("div", { class: "link-row" }, paper.links.map((paperLink) => link(paperLink.label, paperLink.url))) : null;
-
-    return el("article", { class: "publication-item reveal", "data-category": paper.category },
-      el("div", { class: "publication-item__year", text: paper.year }),
-      el("div", { class: "publication-item__main" },
-        el("h3", { text: paper.title }),
-        authors,
-        venue
-      ),
-      el("div", { class: "publication-item__aside" }, badges, links)
+    const title = paper.links?.length ? el("a", { class: "publication-title", href: paper.links[0].url, ...externalAttrs(paper.links[0].url), text: paper.title }) : paper.title;
+    return el("article", { class: "publication-item" },
+      el("div", { class: "publication-year", text: paper.year }),
+      el("div", {},
+        el("h3", {}, title), authors,
+        el("div", { class: "publication-meta" },
+          el("span", { class: "publication-venue", text: paper.venue }),
+          paper.status ? el("span", { text: paper.status }) : null,
+          paper.role ? el("span", { class: "publication-role", text: paper.role }) : null,
+          renderLinks(paper.links)
+        )
+      )
     );
   };
-
-  const renderPublications = () => {
-    const list = $("#publication-list");
-
-    data.publications
-      .slice()
-      .sort((a, b) => (b.date || b.year).localeCompare(a.date || a.year))
-      .forEach((paper) => list.append(renderPublicationItem(paper)));
+  const renderPublications = (printAll = false) => {
+    const filtered = printAll ? papers : matchingPapers();
+    const pageCount = Math.ceil(filtered.length / pageSize);
+    publicationState.page = Math.max(1, Math.min(publicationState.page, pageCount || 1));
+    const start = (publicationState.page - 1) * pageSize;
+    const visible = printAll ? filtered : filtered.slice(start, start + pageSize);
+    $("#publication-list").replaceChildren(...visible.map(renderPublication));
+    $("#publication-empty").hidden = filtered.length !== 0;
+    setText("#publication-status", filtered.length ? `${start + 1}–${Math.min(start + pageSize, filtered.length)} of ${filtered.length} ${filtered.length === 1 ? "publication" : "publications"}` : "0 publications");
+    $("#publication-pagination").replaceChildren(...(pageCount > 1 ? Array.from({ length: pageCount }, (_, index) =>
+      el("button", {
+        type: "button", text: index + 1, "data-page": index + 1,
+        "aria-label": `Page ${index + 1}`, "aria-current": index + 1 === publicationState.page ? "page" : null
+      })
+    ) : []));
+  };
+  const initPublications = () => {
+    setText("#publication-total", papers.length);
+    $("#all-scholar").href = data.contact.scholar;
+    $$("[data-filter]").forEach((button) => button.addEventListener("click", () => {
+      publicationState.filter = button.dataset.filter;
+      publicationState.page = 1;
+      $$("[data-filter]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      renderPublications();
+    }));
+    $("#publication-search").addEventListener("input", (event) => {
+      publicationState.query = event.target.value;
+      publicationState.page = 1;
+      renderPublications();
+    });
+    $("#publication-pagination").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-page]");
+      if (!button) return;
+      publicationState.page = Number(button.dataset.page);
+      renderPublications();
+      $("#publications h2").focus({ preventScroll: true });
+      scrollToContent();
+    });
+    renderPublications();
   };
 
   const renderTalks = () => {
-    const container = $("#talks-list");
-    data.talks
-      .slice()
-      .sort((a, b) => (b.sortDate || b.date).localeCompare(a.sortDate || a.date))
-      .forEach((talk) => {
-      container.append(el("article", { class: "timeline-item reveal" },
-        el("div", { class: "timeline-item__date", text: talk.date }),
-        el("div", {},
-          el("h3", { text: talk.title }),
-          el("p", { text: [talk.venue, talk.location].filter(Boolean).join(", ") }),
-          talk.note ? el("p", { text: talk.note }) : null
-        )
-        ));
-      });
+    $("#talks-list").replaceChildren(...data.talks.slice().sort((a, b) => (b.sortDate || b.date).localeCompare(a.sortDate || a.date)).map((talk) =>
+      el("article", { class: "timeline-item" }, el("div", { class: "timeline-date", text: talk.date }),
+        el("div", {}, el("h3", { text: talk.title }), el("p", { text: [talk.venue, talk.location].filter(Boolean).join(", ") }), talk.note ? el("span", { class: "timeline-badge", text: talk.note }) : null)
+      )
+    ));
   };
-
   const renderEducation = () => {
-    const container = $("#education-list");
-    data.education.forEach((edu) => {
-      container.append(el("article", { class: "timeline-item reveal" },
-        el("div", { class: "timeline-item__date", text: edu.date }),
-        el("div", {},
-          el("h3", { text: edu.institution }),
-          el("p", { text: [edu.degree, edu.location].filter(Boolean).join(" · ") }),
-          edu.advisor ? el("p", {},
-            document.createTextNode("Advisor: "),
-            edu.advisorUrl
-              ? el("a", { href: edu.advisorUrl, ...externalAttrs(edu.advisorUrl) }, edu.advisor)
-              : document.createTextNode(edu.advisor)
-          ) : null,
+    $("#education-list").replaceChildren(...data.education.map((edu) =>
+      el("article", { class: "timeline-item" }, el("div", { class: "timeline-date", text: edu.date }),
+        el("div", {}, el("h3", { text: edu.institution }), el("p", { class: "education-degree", text: edu.degree }), el("p", { text: edu.location }),
+          edu.advisor ? el("p", {}, "Advisor: ", edu.advisorUrl ? el("a", { href: edu.advisorUrl, ...externalAttrs(edu.advisorUrl), text: edu.advisor }) : edu.advisor) : null,
           edu.thesis ? el("p", { text: `Thesis: ${edu.thesis}` }) : null
         )
-      ));
-    });
+      )
+    ));
+    setText("#award-count", data.awards.length);
+    $("#awards-list").replaceChildren(...data.awards.map((award) => el("li", {}, el("span", { class: "award-date", text: award.date }), el("span", { text: [award.title, award.note].filter(Boolean).join(" · ") }))));
+    $("#mentoring-list").replaceChildren(...data.mentoring.map((item) => el("article", { class: "mentoring-item" }, el("h3", { text: item.title }), el("p", { text: `${item.institution} · ${item.date}` }), el("p", { text: item.text }))));
+    $("#skills-list").replaceChildren(...data.skills.map((skill) => el("p", {}, el("strong", { text: `${skill.level}:` }), skill.items.join(" · "))));
   };
-
   const renderContact = () => {
-    setText("#contact-text", `For collaboration, talks, or research conversations, contact ${data.shortName} by email or visit the profiles below.`);
-    const container = $("#contact-links");
-    container.append(
-      el("a", { href: `mailto:${data.contact.email}`, class: "button button--primary" }, data.contact.email),
-      el("a", { href: data.contact.scholar, class: "button", ...externalAttrs(data.contact.scholar) }, "Scholar"),
-      el("a", { href: data.contact.github, class: "button", ...externalAttrs(data.contact.github) }, "GitHub"),
-      el("a", { href: data.contact.orcid, class: "button", ...externalAttrs(data.contact.orcid) }, "ORCID")
-    );
+    $("#contact-email").href = `mailto:${data.contact.email}`;
+    $(".contact-email-address").replaceChildren(document.createTextNode(data.contact.email), el("span", { "aria-hidden": "true", text: "↗" }));
+    $("#contact-profiles").replaceChildren(...profiles.map((profile) => el("div", { class: "contact-profile" },
+      el("a", { href: profile.url, ...externalAttrs(profile.url) }, profile.label, el("span", { "aria-hidden": "true", text: "↗" })), el("p", { text: profile.description })
+    )));
+    setText("#contact-affiliation", data.affiliation);
+    setText("#contact-location", data.location);
     setText("#footer-name", `© ${new Date().getFullYear()} ${data.name}`);
-    setText("#footer-updated", `Last updated: ${data.lastUpdated}`);
+    setText("#footer-updated", `Updated ${data.lastUpdated}`);
   };
 
+  const scrollToContent = () => {
+    const top = window.matchMedia("(max-width: 760px)").matches ? $("#main").getBoundingClientRect().top + window.scrollY : 0;
+    window.scrollTo({ top, behavior: "instant" });
+  };
   const initNavigation = () => {
-    const toggle = $(".mobile-nav-toggle");
-    const nav = $("#site-nav");
-    const closeNav = () => {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+    const tabs = $$("[role='tab']");
+    const panels = $$("[role='tabpanel']");
+    const aliases = new Map([["top", "overview"], ["featured", "research"]]);
+    const resolveTab = (hash) => {
+      const id = hash.replace(/^#/, "");
+      return panels.some((panel) => panel.id === id) ? id : aliases.get(id) || "overview";
     };
-    toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      nav.classList.toggle("is-open", !expanded);
-    });
-    $$("#site-nav a").forEach((navLink) => navLink.addEventListener("click", closeNav));
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && nav.classList.contains("is-open")) {
-        closeNav();
-        toggle.focus();
-      }
-    });
+    let activeId;
+    panels.forEach((panel) => $("h2", panel).setAttribute("tabindex", "-1"));
+    const activate = (id, { push = false, focusPanel = false, scroll = false } = {}) => {
+      const changed = activeId !== id;
+      activeId = id;
+      panels.forEach((panel) => { panel.hidden = panel.id !== id; });
+      tabs.forEach((tab) => {
+        const selected = tab.getAttribute("aria-controls") === id;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      if (push && (changed || !window.location.hash)) history.pushState(null, "", `#${id}`);
+      document.title = id === "overview" ? `${data.name} | Computational Pathology & Spatial Biology` : `${$("#tab-" + id).textContent} | ${data.name}`;
+      if (focusPanel) $("h2", $("#" + id)).focus({ preventScroll: true });
+      if (scroll) scrollToContent();
+    };
     document.addEventListener("click", (event) => {
-      if (nav.classList.contains("is-open") && !nav.contains(event.target) && !toggle.contains(event.target)) closeNav();
+      const anchor = event.target.closest('a[href^="#"]');
+      if (!anchor || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const hash = anchor.getAttribute("href");
+      if (hash === "#main") {
+        event.preventDefault();
+        $("h2", $("#" + activeId)).focus({ preventScroll: true });
+        scrollToContent();
+        return;
+      }
+      if (!panels.some((panel) => `#${panel.id}` === hash) && !aliases.has(hash.slice(1))) return;
+      event.preventDefault();
+      activate(resolveTab(hash), { push: true, focusPanel: anchor.getAttribute("role") !== "tab", scroll: true });
+      if (anchor.classList.contains("brand")) window.scrollTo({ top: 0, behavior: "instant" });
     });
-    const header = $("[data-elevate]");
-    const setElevated = () => header.classList.toggle("is-elevated", window.scrollY > 6);
-    setElevated();
-    window.addEventListener("scroll", setElevated, { passive: true });
+    tabs.forEach((tab, index) => tab.addEventListener("keydown", (event) => {
+      let next;
+      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") next = 0;
+      if (event.key === "End") next = tabs.length - 1;
+      if (event.key === " ") next = index;
+      if (next === undefined) return;
+      event.preventDefault();
+      tabs[next].focus({ preventScroll: true });
+      activate(tabs[next].getAttribute("aria-controls"), { push: true, scroll: true });
+    }));
+    const restore = () => activate(resolveTab(window.location.hash), { scroll: true });
+    window.addEventListener("popstate", restore);
+    window.addEventListener("hashchange", restore);
+    activate(resolveTab(window.location.hash));
+    // Native fragment scrolling must not hide the tab bar on a direct section link.
+    if (window.location.hash) requestAnimationFrame(scrollToContent);
   };
 
   const initTheme = () => {
-    const saved = localStorage.getItem("preferred-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const current = saved || (prefersDark ? "dark" : "light");
-    const themeToggle = $(".theme-toggle");
-    const applyTheme = (theme) => {
+    const toggle = $(".theme-toggle");
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    let saved;
+    try { saved = localStorage.getItem("preferred-theme"); } catch (_) {}
+    const apply = (theme) => {
+      const dark = theme === "dark";
       document.documentElement.dataset.theme = theme;
-      const isDark = theme === "dark";
-      themeToggle.setAttribute("aria-pressed", String(isDark));
-      themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
-      themeToggle.title = `Switch to ${isDark ? "light" : "dark"} mode`;
+      toggle.setAttribute("aria-pressed", String(dark));
+      toggle.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
+      toggle.title = toggle.getAttribute("aria-label");
+      $("meta[name='theme-color']").content = dark ? "#121a24" : "#f8f9fb";
     };
-    applyTheme(current);
-    themeToggle.addEventListener("click", () => {
-      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      applyTheme(next);
-      localStorage.setItem("preferred-theme", next);
+    apply(saved === "dark" || saved === "light" ? saved : media.matches ? "dark" : "light");
+    toggle.addEventListener("click", () => {
+      saved = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      apply(saved);
+      try { localStorage.setItem("preferred-theme", saved); } catch (_) {}
+    });
+    media.addEventListener("change", () => { if (!saved) apply(media.matches ? "dark" : "light"); });
+  };
+  const initPrint = () => {
+    let closedDetails = [];
+    window.addEventListener("beforeprint", () => {
+      closedDetails = $$("details:not([open])");
+      closedDetails.forEach((detail) => { detail.open = true; });
+      renderPublications(true);
+    });
+    window.addEventListener("afterprint", () => {
+      closedDetails.forEach((detail) => { detail.open = false; });
+      renderPublications();
     });
   };
-
-  const initReveal = () => {
-    const items = $$(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      items.forEach((item) => item.classList.add("is-visible"));
-      return;
-    }
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    items.forEach((item) => observer.observe(item));
-  };
-
   const injectStructuredData = () => {
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: data.name,
-      jobTitle: data.title,
-      description: data.introduction,
-      affiliation: { "@type": "CollegeOrUniversity", name: data.affiliation },
-      email: `mailto:${data.contact.email}`,
-      image: data.profileImage,
-      url: window.location.href,
-      sameAs: [data.contact.github, data.contact.scholar, data.contact.orcid]
-    };
-    document.head.append(el("script", { type: "application/ld+json", text: JSON.stringify(schema) }));
+    const siteUrl = $("link[rel='canonical']").href;
+    document.head.append(el("script", { type: "application/ld+json", text: JSON.stringify({
+      "@context": "https://schema.org", "@type": "Person", name: data.name, jobTitle: data.title,
+      description: data.introduction, affiliation: { "@type": "CollegeOrUniversity", name: data.affiliation },
+      email: `mailto:${data.contact.email}`, image: new URL(data.profileImage, siteUrl).href,
+      url: siteUrl, sameAs: profiles.map((profile) => profile.url)
+    }) }));
   };
-
   const init = () => {
-    renderHero();
+    renderProfile();
     renderResearch();
-    renderFeatured();
-    renderPublications();
     renderTalks();
     renderEducation();
     renderContact();
-    initTheme();
+    initPublications();
     initNavigation();
-    initReveal();
+    initTheme();
+    initPrint();
     injectStructuredData();
   };
-
   document.addEventListener("DOMContentLoaded", init);
 })();
